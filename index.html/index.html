@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Double Smoke Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #000;
+      font-family: 'Roboto', 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .splash-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .splash-screen img {
+      width: 240px;
+      margin-bottom: 30px;
+    }
+    .splash-screen button {
+      background: #f5f5dc;
+      color: #111;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .splash-screen button:hover {
+      background: #e0e0b0;
+    }
+
+    .logo-bar {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 0;
+      width: 100%;
+      background: rgba(0,0,0,0.97);
+    }
+    .logo-bar img {
+      height: 90px;
+      transition: height 0.3s ease;
+    }
+
+    .main-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 480px;
+      margin-top: 20px;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      margin-top: 24px;
+    }
+    .nav-menu button {
+      background: #f5f5dc;
+      color: #111;
+      border: none;
+      border-radius: 22px;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      font-family: inherit;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .nav-menu button.inactive {
+      transform: scale(0.85);
+      opacity: 0.5;
+    }
+
+    .product-section {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 28px;
+      animation: fadeIn 0.4s ease;
+    }
+    .product-section.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .product-image-container {
+      background: rgba(255,255,255,0.10);
+      border-radius: 28px;
+      padding: 20px;
+      margin-bottom: 16px;
+      width: 90%;
+      max-width: 400px;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .product-image-container img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: 18px;
+      background: #222;
+    }
+
+    .product-name {
+      font-size: 2rem;
+      color: #f5f5dc;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 0 0 6px #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Splash -->
+  <div class="splash-screen" id="splash">
+    <img src="../images/logo3.png" alt="Double Smoke Logo">
+    <button onclick="showMenu()">Enter Products</button>
+  </div>
+
+  <!-- Logo -->
+  <div class="logo-bar" id="logoBar">
+    <img src="../images/logo3.png" alt="Logo">
+  </div>
+
+  <!-- Main -->
+  <div class="main-content" id="mainContent">
+    <nav class="nav-menu" id="menuNav">
+      <button class="active" data-product="rolled-red">Rolled Gold Light – Red Pack</button>
+      <button data-product="rolled-blue">Rolled Gold Light</button>
+      <button data-product="play-fares-full">Play Fares Full</button>
+      <button data-product="play-fares-light">Play Fares Light</button>
+      <button data-product="menthol">Canadian Menthol</button>
+      <button data-product="classics-silver">Canadian Classics Silver</button>
+      <button data-product="classics-original">Canadian Classics Original</button>
+      <button data-product="classics-light">Canadian Classics Light</button>
+    </nav>
+
+    <section class="product-section active" id="rolled-red">
+      <div class="product-image-container">
+        <img src="../images/rolled_gold_blue_light_cigarettes_king_size_red.png" alt="Rolled Red">
+      </div>
+      <div class="product-name">Rolled Gold Light – Red Pack</div>
+    </section>
+
+    <section class="product-section" id="rolled-blue">
+      <div class="product-image-container">
+        <img src="../images/rolled_gold_blue_light_cigarettes_king_size_blue.png" alt="Rolled Blue">
+      </div>
+      <div class="product-name">Rolled Gold Light</div>
+    </section>
+
+    <section class="product-section" id="play-fares-full">
+      <div class="product-image-container">
+        <img src="../images/Play-fares-full.png" alt="Play Fares Full">
+      </div>
+      <div class="product-name">Play Fares Full</div>
+    </section>
+
+    <section class="product-section" id="play-fares-light">
+      <div class="product-image-container">
+        <img src="../images/Play-fares-light.png" alt="Play Fares Light">
+      </div>
+      <div class="product-name">Play Fares Light</div>
+    </section>
+
+    <section class="product-section" id="menthol">
+      <div class="product-image-container">
+        <img src="../images/Canadian-Menthol.png" alt="Canadian Menthol">
+      </div>
+      <div class="product-name">Canadian Menthol</div>
+    </section>
+
+    <section class="product-section" id="classics-silver">
+      <div class="product-image-container">
+        <img src="../images/Canadian-Classics-Silver.png" alt="Canadian Classics Silver">
+      </div>
+      <div class="product-name">Canadian Classics Silver</div>
+    </section>
+
+    <section class="product-section" id="classics-original">
+      <div class="product-image-container">
+        <img src="../images/Canadian-Classics-orginal.png" alt="Canadian Classics Original">
+      </div>
+      <div class="product-name">Canadian Classics Original</div>
+    </section>
+
+    <section class="product-section" id="classics-light">
+      <div class="product-image-container">
+        <img src="../images/Canadian-Classics-Light.png" alt="Canadian Classics Light">
+      </div>
+      <div class="product-name">Canadian Classics Light</div>
+    </section>
+  </div>
+
+  <script>
+    function showMenu() {
+      document.getElementById('splash').style.display = 'none';
+      document.getElementById('logoBar').style.display = 'flex';
+      document.getElementById('mainContent').style.display = 'flex';
+    }
+
+    const buttons = document.querySelectorAll('.nav-menu button');
+    const sections = document.querySelectorAll('.product-section');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active', 'inactive'));
+        btn.classList.add('active');
+        buttons.forEach(b => {
+          if (b !== btn) b.classList.add('inactive');
+        });
+
+        sections.forEach(sec => sec.classList.remove('active'));
+        document.getElementById(btn.dataset.product).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
